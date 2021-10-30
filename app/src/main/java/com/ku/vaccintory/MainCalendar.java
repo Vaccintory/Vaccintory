@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 public class MainCalendar extends AppCompatActivity {
 
-    private String dateKey;
+    private String dateKey; //// String form dd/mm/yyyy
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
