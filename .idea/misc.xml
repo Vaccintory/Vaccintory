@@ -3,12 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.31927083333333334" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/button_background.xml" value="0.37864583333333335" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/header_mainmenu.xml" value="0.31927083333333334" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/ic_launcher_background.xml" value="0.31927083333333334" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_calendar.xml" value="0.35643115942028986" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_calendar2.xml" value="0.35643115942028986" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_date_info.xml" value="0.2916666666666667" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_main_chat_bot.xml" value="0.2916666666666667" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/content_calendar.xml" value="0.35643115942028986" />
+        <entry key="..\:/Vaccintory/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.31927083333333334" />
         <entry key="..\:/Vaccintory/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />
       </map>
     </option>
