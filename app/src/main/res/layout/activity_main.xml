@@ -24,7 +24,11 @@
             android:textSize="30dp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="10dp" />
+            tools:layout_editor_absoluteY="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -64,7 +68,7 @@
                     android:layout_margin="8dp"
                     android:contentDescription="@string/app_name"
                     android:padding="8dp"
-                    android:src="@drawable/calendar" />
+                    android:src="@drawable/ico_calendar" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -100,7 +104,7 @@
                     android:layout_margin="8dp"
                     android:contentDescription="@string/app_name"
                     android:padding="8dp"
-                    android:src="@drawable/chatbot" />
+                    android:src="@drawable/ico_chatbot" />
 
                 <TextView
                     android:layout_width="match_parent"

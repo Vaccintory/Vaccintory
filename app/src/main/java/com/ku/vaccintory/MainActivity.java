@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCalendar.setOnClickListener(this);
         buttonChatBot = (LinearLayout) findViewById(R.id.buttonLayoutChatBot);
         buttonChatBot.setOnClickListener(this);
+
+
     }
 
     @Override
