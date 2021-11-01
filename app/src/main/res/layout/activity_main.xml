@@ -19,12 +19,12 @@
             android:id="@+id/textVaccintory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="15dp"
             android:text="Vaccintory"
             android:textColor="@color/color_white"
-            android:textSize="30"
-            android:textStyle="bold"/>
+            android:textSize="30dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="10dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

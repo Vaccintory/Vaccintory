@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LinearLayout buttonCalendar;
+    private LinearLayout buttonChatBot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,16 +19,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         buttonCalendar = (LinearLayout) findViewById(R.id.buttonLayoutCalendar);
-        buttonCalendar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                openCalendar();
-            }
-        });
+        buttonCalendar.setOnClickListener(this);
+        buttonChatBot = (LinearLayout) findViewById(R.id.buttonLayoutChatBot);
+        buttonChatBot.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonLayoutCalendar:
+                openCalendar();
+                break;
+            case R.id.buttonLayoutChatBot:
+                openChatBot();
+                break;
+        }
+    }
 
     public void openCalendar() {
         Intent intent = new Intent(this, MainCalendar.class);
+        startActivity(intent);
+    }
+    public void openChatBot() {
+        Intent intent = new Intent(this, MainChatBot.class);
         startActivity(intent);
     }
 }
