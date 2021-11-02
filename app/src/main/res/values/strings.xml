@@ -9,6 +9,20 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_info">Info</string>
+    <string name="edit_information">Edit information</string>
+    <string name="information">Information</string>
+    <string name="date_xx_xx_xxxx">Date : xx/xx/xxxx</string>
+    <string name="edit">Edit</string>
+    <string name="back">Back</string>
+    <string name="information_note">Information Note</string>
+    <string name="info_remind_me">Remind me</string>
+    <string name="info_vaccineType">ประเภทวัคซีน</string>
+    <string name="info_vaccinePlace">สถานที่รับวัคซีน</string>
+    <string name="info_vaccinePrice">ราคา บ.</string>
+    <string name="info_vaccineNote">บันทึกเพิ่มเติม</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 
 
 </resources>

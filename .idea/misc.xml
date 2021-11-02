@@ -7,11 +7,19 @@
         <entry key="..\:/Vaccintory/app/src/main/res/drawable/button_background.xml" value="0.37864583333333335" />
         <entry key="..\:/Vaccintory/app/src/main/res/drawable/header_dateinfo.xml" value="0.22447916666666667" />
         <entry key="..\:/Vaccintory/app/src/main/res/drawable/header_mainmenu.xml" value="0.31927083333333334" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/ic_baseline_check_box_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/ic_baseline_check_box_outline_blank_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/ic_checkbox.xml" value="0.37864583333333335" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/ic_checkedBox.xml" value="0.2935185185185185" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/ic_checkedbox.xml" value="0.37864583333333335" />
         <entry key="..\:/Vaccintory/app/src/main/res/drawable/ic_launcher_background.xml" value="0.31927083333333334" />
+        <entry key="..\:/Vaccintory/app/src/main/res/drawable/image_checkbox.xml" value="0.37864583333333335" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_calendar.xml" value="0.35643115942028986" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_calendar2.xml" value="0.35643115942028986" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_date_info.xml" value="0.2916666666666667" />
+        <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_info.xml" value="0.24583333333333332" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_main2.xml" value="0.24583333333333332" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/activity_main_chat_bot.xml" value="0.2916666666666667" />
         <entry key="..\:/Vaccintory/app/src/main/res/layout/content_calendar.xml" value="0.35643115942028986" />
         <entry key="..\:/Vaccintory/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.31927083333333334" />

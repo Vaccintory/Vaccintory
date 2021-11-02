@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".calendar.info.EditInfo"
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menuHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_background"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textEditInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_information"
+            android:textColor="@color/color_white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="10dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menuHeader"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/EditInfo_textDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="34dp"
+                android:fontFamily="@font/allerta"
+                android:text="@string/date_xx_xx_xxxx"
+                android:textColor="@color/color_black"
+                android:textSize="25sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteY="10dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EditInfo_typeVaccineLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="24dp"
+                android:hint="@string/info_vaccineType"
+                app:counterEnabled="true"
+                app:counterMaxLength="30"
+                app:helperText="Required"
+                app:helperTextTextColor="@color/color_orangeRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EditInfo_textDate">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EditInfo_typeVaccine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="31" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EditInfo_placeVaccineLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:hint="@string/info_vaccinePlace"
+                app:counterEnabled="true"
+                app:counterMaxLength="70"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EditInfo_typeVaccineLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EditInfo_placeVaccine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="71" />
+                <!--https://youtu.be/IxhIa3eZxz8-->
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EditInfo_priceLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="250dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                android:hint="@string/info_vaccinePrice"
+                app:helperTextTextColor="@color/color_orangeRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EditInfo_placeVaccineLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EditInfo_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:counterMaxLength="11"
+                    tools:ignore="SpeakableTextPresentCheck" />
+                <!--https://youtu.be/IxhIa3eZxz8-->
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/EditInfo_remindMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/info_remind_me"
+                android:layout_marginTop="25dp"
+                android:button="@drawable/image_checkbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/EditInfo_priceLayout"
+                app:layout_constraintTop_toBottomOf="@+id/EditInfo_placeVaccineLayout"
+                android:fontFamily="@font/allerta"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EditInfo_noteLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="24dp"
+                android:hint="@string/info_vaccineNote"
+                app:helperTextTextColor="@color/color_orangeRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EditInfo_priceLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EditInfo_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <!--https://youtu.be/IxhIa3eZxz8-->
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+                android:id="@+id/EditInfo_saveButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="90dp"
+                android:fontFamily="@font/allerta"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:text="@string/save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/EditInfo_cancelButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EditInfo_noteLayout"
+
+                />
+
+            <Button
+                android:id="@+id/EditInfo_cancelButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="90dp"
+                android:fontFamily="@font/allerta"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:text="@string/cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/EditInfo_saveButton"
+                app:layout_constraintTop_toBottomOf="@+id/EditInfo_noteLayout" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

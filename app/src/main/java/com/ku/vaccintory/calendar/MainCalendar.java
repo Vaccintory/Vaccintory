@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.ku.vaccintory.R;
+import com.ku.vaccintory.calendar.info.MainInfo;
 
 public class MainCalendar extends AppCompatActivity {
 
@@ -17,20 +17,20 @@ public class MainCalendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        /*dateKey = "12-10-1564";   //ตัวอย่างการเรียกใช้หน้าข้อมูลของวัน
-        openDateInfo();
+        /*dateKey = "12-10-2564";   //ตัวอย่างการเรียกใช้หน้าข้อมูลของวัน
+        openMainInfo();
 
         //การ Load ข้อมูล
         String fileName = dateKey+".txt";
         String rawData = InfoFunction.loadInfo(this,fileName);
 
-        InfoFunction.isFileExist(this,fileName); //เช็คว่าไฟล์ชื่อนี้  มีอยู่ไหม fileName  Ex.  12-10-1564.txt  return 1 ถ้ามีไฟล์ชื่อนี้ใน save */
+        InfoFunction.isFileExist(this,fileName); //เช็คว่าไฟล์ชื่อนี้  มีอยู่ไหม fileName  Ex.  12-10-1564.txt  return 1 ถ้ามีไฟล์ชื่อนี้ใน save*/
 
     }
 
 
-    public void openDateInfo() {    ///use this function to pass Date  && Active DateInfo class
-        Intent intent = new Intent(this, DateInfo.class);
+    private void openMainInfo() {    ///use this function to pass Date  && Active MainInfo class
+        Intent intent = new Intent(this, MainInfo.class);
         intent.putExtra("dateKey",dateKey);
         startActivity(intent);
     }

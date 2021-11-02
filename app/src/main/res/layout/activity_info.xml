@@ -4,29 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".calendar.DateInfo"
-    >
-
+    tools:context=".calendar.info.Info">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menuHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/header_mainmenu"
+        android:background="@drawable/header_background"
         android:padding="10dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textDateInfo"
+            android:id="@+id/textInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Info"
+            android:text="@string/information"
             android:textColor="@color/color_white"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="10dp"
             tools:layout_editor_absoluteY="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
@@ -50,75 +48,61 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/dateInfo_textDate"
+                android:id="@+id/Info_textDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="34dp"
                 android:fontFamily="@font/allerta"
-                android:text="Date : xx/xx/xxxx"
+                android:text="@string/date_xx_xx_xxxx"
                 android:textColor="@color/color_black"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteY="10dp" />
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dateInfo_typeVaccineLayout"
+            <TextView
+                android:id="@+id/Info_typeVaccine"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="24dp"
-                android:hint="ประเภทวัคซีน"
-                app:counterEnabled="true"
-                app:counterMaxLength="30"
-                app:helperText="Required"
-                app:helperTextTextColor="@color/color_orangeRed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dateInfo_textDate">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/dateInfo_typeVaccine"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLength="31" />
+                app:layout_constraintTop_toBottomOf="@+id/Info_textDate"
+                android:textSize="20sp"
+                android:text="ประเภทวัคซีน : "
+
+                />
 
 
-            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dateInfo_placeVaccineLayout"
+            <TextView
+                android:id="@+id/Info_placeVaccine"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:hint="สถานที่รับวัคซีน"
+                android:text="สถานที่รับวัคซีน : "
                 app:counterEnabled="true"
                 app:counterMaxLength="70"
                 app:helperText="Required"
                 app:helperTextTextColor="@color/color_orangeRed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dateInfo_typeVaccineLayout">
+                app:layout_constraintTop_toBottomOf="@+id/Info_typeVaccine"
+                android:textSize="20sp"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/dateInfo_placeVaccine"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLength="71" />
-                <!--https://youtu.be/IxhIa3eZxz8-->
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dateInfo_priceLayout"
+            <TextView
+                android:id="@+id/Info_price"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,80 +111,99 @@
                 android:layout_marginEnd="250dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
-                android:hint="price"
+                android:text="ราคา : บาท"
                 app:helperTextTextColor="@color/color_orangeRed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dateInfo_placeVaccineLayout">
+                app:layout_constraintTop_toBottomOf="@+id/Info_placeVaccine"
+                android:textSize="20sp"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/dateInfo_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:counterMaxLength="11"
-                    />
-                <!--https://youtu.be/IxhIa3eZxz8-->
+            <CheckBox
+                android:id="@+id/Info_remindMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/info_remind_me"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="20dp"
+                android:button="@drawable/image_checkbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/Info_price"
+                app:layout_constraintTop_toBottomOf="@+id/Info_placeVaccine"
+                android:fontFamily="@font/allerta"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                android:clickable="false"
+                />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dateInfo_noteLayout"
+            <TextView
+                android:id="@+id/Info_note"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="24dp"
-                android:hint="note"
+                android:text="บันทึกเพิ่มเติม"
                 app:helperTextTextColor="@color/color_orangeRed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dateInfo_priceLayout">
+                app:layout_constraintTop_toBottomOf="@+id/Info_price"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:id="@+id/Info_noteText"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/information_note"
+                app:helperTextTextColor="@color/color_orangeRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Info_note"
+                android:textSize="15sp"
+                />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/dateInfo_note"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <!--https://youtu.be/IxhIa3eZxz8-->
 
-            </com.google.android.material.textfield.TextInputLayout>
 
 
 
             <Button
-                android:id="@+id/dateInfo_saveButton"
+                android:id="@+id/Info_EditButton"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="90dp"
                 android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="15dp"
-                android:text="Save"
+                android:text="@string/edit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="H,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/dateInfo_cancelButton"
+                app:layout_constraintEnd_toStartOf="@id/Info_BackButton"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dateInfo_noteLayout"
+                app:layout_constraintTop_toBottomOf="@+id/Info_noteText"
 
                 />
 
             <Button
-                android:id="@+id/dateInfo_cancelButton"
+                android:id="@+id/Info_BackButton"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="90dp"
                 android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="15dp"
-                android:text="cancel"
+                android:text="@string/back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="H,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/dateInfo_saveButton"
-                app:layout_constraintTop_toBottomOf="@+id/dateInfo_noteLayout" />
+                app:layout_constraintStart_toEndOf="@+id/Info_EditButton"
+                app:layout_constraintTop_toBottomOf="@+id/Info_noteText" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

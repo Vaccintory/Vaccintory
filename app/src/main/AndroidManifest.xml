@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ku.vaccintory">
 
@@ -9,7 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vaccintory">
         <activity
-            android:name=".calendar.DateInfo"
+            android:name=".calendar.info.Info"
+            android:exported="true"
+            android:label="@string/title_activity_info"
+            android:theme="@style/Theme.Vaccintory.NoActionBar" />
+        <activity
+            android:name=".calendar.info.MainInfo"
+            android:exported="true" />
+        <activity
+            android:name=".calendar.info.EditInfo"
             android:exported="true" />
         <activity
             android:name=".chatbot.MainChatBot"
