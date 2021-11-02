@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ku.vaccintory.R;
 
@@ -42,7 +43,10 @@ public class DateInfo extends AppCompatActivity implements View.OnClickListener 
 
         String rawData = "";
         String fileName = this.date+".txt";
-        rawData = InfoFunction_LoadNSave.loadInfo(this,fileName);
+        rawData = InfoFunction.loadInfo(this,fileName);
+
+
+
 
 
         String dateTextForm = date.replaceAll("[-]", "/");
@@ -78,7 +82,7 @@ public class DateInfo extends AppCompatActivity implements View.OnClickListener 
 
     private void saveInfo() throws IOException {
         String info = this.date+":"+editTextType.getText()+":"+editTextPlace.getText()+":"+editTextPrice.getText()+":"+editTextNote.getText();
-        InfoFunction_LoadNSave.saveInfo(this,this.date+".txt",info);
+        InfoFunction.saveInfo(this,this.date+".txt",info);
         editTextNote.getText().clear();editTextPrice.getText().clear();editTextPlace.getText().clear();editTextType.getText().clear();
 
         Intent intent = new Intent(this, MainCalendar.class);
