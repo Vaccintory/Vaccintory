@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.ku.vaccintory.calendar.InfoFunction;
+import com.ku.vaccintory.calendar.InfoFunc;
 
 public class MainInfo extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class MainInfo extends AppCompatActivity {
         }
 
         String fileName = dateKey+".txt";
-        if( InfoFunction.isFileExist(this,fileName) )
+        if( InfoFunc.isFileExist(this,fileName) )
             openInfo();
         else
             openEditInfo();

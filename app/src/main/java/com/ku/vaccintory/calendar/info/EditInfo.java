@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ku.vaccintory.R;
-import com.ku.vaccintory.calendar.InfoFunction;
+import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
 
 
@@ -96,7 +96,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         info = info+": " +editTextNote.getText();
         info = info+": " +checkRemind.isChecked();
 
-        InfoFunction.saveInfo(this,this.date+".txt",info);
+        InfoFunc.saveInfo(this,this.date+".txt",info);
         editTextNote.getText().clear();editTextPrice.getText().clear();editTextPlace.getText().clear();editTextType.getText().clear();
 
         Intent intent = new Intent(this, MainCalendar.class);

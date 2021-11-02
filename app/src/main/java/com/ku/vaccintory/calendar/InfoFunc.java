@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InfoFunction extends AppCompatActivity {
+public class InfoFunc extends AppCompatActivity {
 
     public static String loadInfo(AppCompatActivity thisClass,String fileName){
 
@@ -67,5 +67,36 @@ public class InfoFunction extends AppCompatActivity {
         File file = new File(thisClass.getApplicationContext().getFilesDir(),fileName);
         return file.exists();
     }
+
+
+    //Get theese Data from RawInfo
+
+    public static String getInfo_Type(String rawData)
+    {
+        String[] infoArray = rawData.split(":");
+        return infoArray[1];
+
+    }
+    public static String getInfo_Place(String rawData)
+    {
+        String[] infoArray = rawData.split(":");
+        return infoArray[2];
+    }
+    public static String getInfo_Price(String rawData)
+    {
+        String[] infoArray = rawData.split(":");
+        return infoArray[3];
+    }
+    public static String getInfo_Note(String rawData)
+    {
+        String[] infoArray = rawData.split(":");
+        return infoArray[4];
+    }
+    public static String getInfo_Check(String rawData)
+    {
+        String[] infoArray = rawData.split(":");
+        return infoArray[5];
+    }
+
 
 }

@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.ku.vaccintory.R;
-import com.ku.vaccintory.calendar.InfoFunction;
+import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
 
 public class Info extends AppCompatActivity implements View.OnClickListener   {
@@ -32,7 +32,7 @@ public class Info extends AppCompatActivity implements View.OnClickListener   {
 
         String rawData;
         String fileName = this.dateKey+".txt";
-        rawData = InfoFunction.loadInfo(this,fileName);
+        rawData = InfoFunc.loadInfo(this,fileName);
 
 
         String dateTextForm = dateKey.replaceAll("[-]", "/");
@@ -46,13 +46,11 @@ public class Info extends AppCompatActivity implements View.OnClickListener   {
         TextView textNote = findViewById(R.id.Info_noteText);
         CheckBox checkRemind = findViewById(R.id.Info_remindMe);
 
-        assert rawData != null;
-        String[] infoArray = rawData.split(":");
-        textType.setText(String.format("ประเภทวัคซีน : %s", infoArray[1]));
-        textPlace.setText(String.format("สถานที่รับวัคซีน : %s", infoArray[2]));
-        textPrice.setText(String.format("ราคา %s บาท", infoArray[3]));
-        textNote.setText(infoArray[4]);
-        checkRemind.setChecked(infoArray[5].contains("true"));
+        textType.setText(String.format("ประเภทวัคซีน : %s", InfoFunc.getInfo_Type(rawData) ));
+        textPlace.setText(String.format("สถานที่รับวัคซีน : %s", InfoFunc.getInfo_Place(rawData) ));
+        textPrice.setText(String.format("ราคา %s บาท", InfoFunc.getInfo_Price(rawData) ));
+        textNote.setText( InfoFunc.getInfo_Note(rawData) );
+        checkRemind.setChecked( InfoFunc.getInfo_Check(rawData).contains("true") );
 
 
         Button editButton = findViewById(R.id.Info_EditButton);
