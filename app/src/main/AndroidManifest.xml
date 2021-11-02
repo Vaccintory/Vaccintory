@@ -9,16 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vaccintory">
         <activity
-            android:name=".DateInfo"
+            android:name=".calendar.DateInfo"
             android:exported="true" />
         <activity
-            android:name=".MainChatBot"
+            android:name=".chatbot.MainChatBot"
             android:exported="true" />
         <activity
-            android:name=".MainCalendar"
+            android:name=".calendar.MainCalendar"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

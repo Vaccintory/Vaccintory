@@ -1,12 +1,15 @@
-package com.ku.vaccintory;
+package com.ku.vaccintory.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.ku.vaccintory.calendar.MainCalendar;
+import com.ku.vaccintory.chatbot.MainChatBot;
+import com.ku.vaccintory.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
