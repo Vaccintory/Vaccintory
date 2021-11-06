@@ -74,28 +74,28 @@ public class InfoFunc extends AppCompatActivity {
     public static String getInfo_Type(String rawData)
     {
         String[] infoArray = rawData.split(":");
-        return infoArray[1];
+        return infoArray[1];  ///Return will contain ' '  (space)   Ex. " Sino"
 
     }
     public static String getInfo_Place(String rawData)
     {
         String[] infoArray = rawData.split(":");
-        return infoArray[2];
+        return infoArray[2];  ///Return will contain ' '  (space)   Ex. " KPS"
     }
     public static String getInfo_Price(String rawData)
     {
         String[] infoArray = rawData.split(":");
-        return infoArray[3];
+        return infoArray[3];  ///Return will contain ' '  (space)   Ex. " 250"
     }
     public static String getInfo_Note(String rawData)
     {
         String[] infoArray = rawData.split(":");
-        return infoArray[4];
+        return infoArray[4]; ///Return will contain ' '  (space)   Ex. " Note"
     }
     public static String getInfo_Check(String rawData)
     {
         String[] infoArray = rawData.split(":");
-        return infoArray[5];
+        return infoArray[5];  ///Return will contain ' '  (space)   Ex. " true"
     }
 
 

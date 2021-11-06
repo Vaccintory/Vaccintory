@@ -42,14 +42,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if( InfoFunc.isFileExist(this,fileName) ){
 
-            DateClass.setYourDate(dateToday);
+            String rawData = InfoFunc.loadInfo(this,fileName);
+
+            assert rawData != null;
+            if( InfoFunc.getInfo_Check(rawData).contains("true") )
+            {
+                DateClass.setYourDate(dateToday);
+
+                Intent intent = new Intent(this, NotifyReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                long timeNow = System.currentTimeMillis();
+                alarmManager.set(AlarmManager.RTC_WAKEUP,timeNow + 100 , pendingIntent);
+            }
 
 
-            Intent intent = new Intent(this, NotifyReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            long timeNow = System.currentTimeMillis();
-            alarmManager.set(AlarmManager.RTC_WAKEUP,timeNow + 100 , pendingIntent);
         }
 
 
