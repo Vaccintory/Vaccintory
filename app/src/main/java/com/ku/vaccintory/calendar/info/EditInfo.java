@@ -22,12 +22,14 @@ import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class EditInfo extends AppCompatActivity implements View.OnClickListener {
 
-    //private ScheduleClient scheduleClient;
 
     private String date = null;
 
@@ -53,10 +55,26 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
             //The key argument here must match that used in the other activity
         }
 
+
         editTextType = findViewById(R.id.EditInfo_typeVaccine);
         editTextPlace = findViewById(R.id.EditInfo_placeVaccine);
         editTextPrice = findViewById(R.id.EditInfo_price);
         editTextNote = findViewById(R.id.EditInfo_note);
+        checkRemind = findViewById(R.id.EditInfo_remindMe);
+
+        String fileName = date+".txt";
+        if( InfoFunc.isFileExist(this,fileName) ){
+
+
+            String rawData = InfoFunc.loadInfo(this,fileName);
+
+            assert rawData != null;
+            editTextType.setText( InfoFunc.getInfo_Type(rawData) );
+            editTextPlace.setText( InfoFunc.getInfo_Place(rawData) );
+            editTextPrice.setText( InfoFunc.getInfo_Price(rawData) );
+            editTextNote.setText( InfoFunc.getInfo_Note(rawData) );
+            checkRemind.setChecked( InfoFunc.getInfo_Check(rawData).contains("true") );
+        }
 
 
         String dateTextForm = date.replaceAll("[-]", "/");
@@ -71,8 +89,37 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         Button buttonSave = findViewById(R.id.EditInfo_saveButton);
         buttonSave.setOnClickListener(this);
 
-        checkRemind = findViewById(R.id.EditInfo_remindMe);
+
         checkRemind.setOnClickListener(this);
+
+
+        SimpleDateFormat sdfDay = new SimpleDateFormat("dd", Locale.getDefault());
+        String day = sdfDay.format(new Date());
+        SimpleDateFormat sdfMonth = new SimpleDateFormat("MM", Locale.getDefault());
+        String month = sdfMonth.format(new Date());
+        SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy", Locale.getDefault());
+        String year = sdfYear.format(new Date());
+        String[] dateSplited = date.split("-");
+        int day1 = Integer.parseInt(dateSplited[0]);
+        int day2 = Integer.parseInt(day);
+        int month1 = Integer.parseInt(dateSplited[1]);
+        int month2 = Integer.parseInt(month);
+        int year1 = Integer.parseInt(dateSplited[2]);
+        int year2 = Integer.parseInt(year);
+        if( year1 < year2  )
+        {
+            checkRemind.setEnabled(false);
+        }else if( month1 < month2 )
+        {
+            checkRemind.setEnabled(false);
+        }
+        else if(day1 < day2){
+            checkRemind.setEnabled(false);
+        }
+        else{
+            checkRemind.setEnabled(true);
+        }
+
 
 
     }
@@ -88,7 +135,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.EditInfo_saveButton:
                 try {
-                    //settingReminder();
+                    settingReminder();
                     saveInfo();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -114,6 +161,8 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         editTextPlace.getText().clear();
         editTextType.getText().clear();
 
+
+
         Intent intent = new Intent(this, MainCalendar.class);
         startActivity(intent);
 
@@ -124,56 +173,32 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         startActivity(intent);
     }
 
-    /*@RequiresApi(api = Build.VERSION_CODES.O)
-    private void settingReminder() {
-
-        CreateNotificationCh();
-        setAlarm();
-        Toast.makeText(this, "เปิดการแจ้งเตือนแล้ว!", Toast.LENGTH_LONG).show();
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void CreateNotificationCh() {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "alarmRemindCh";
-            String description = "Channel for alarmRemind";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel("alarmRemind", name, importance);
-
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
+    private void settingReminder() {
+        DateClass.setYourDate(date);
+        DateClass.setYourHour("00:00:00");
+        setAlarm();
     }
+
+
 
     private void setAlarm() {
 
 
+        boolean alarm = (PendingIntent.getBroadcast(this, 0, new Intent("ALARM"), PendingIntent.FLAG_NO_CREATE) == null);
 
-        int day = 3;
-        int month = 2;
-        int year = 2014;
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        Intent intent = new Intent(this, Notify.class);
-        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-
-
-        Calendar calendar = Calendar. getInstance () ;
-        calendar.set(year, month, day);
-        calendar.set(Calendar. SECOND , 0 ) ;
-        calendar.set(Calendar. MINUTE , 0 ) ;
-        calendar.set(Calendar. HOUR , 0 ) ;
+        if(alarm){
+            Intent intentAlarm = new Intent("ALARM");
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intentAlarm,0);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.add(Calendar.SECOND, 3);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),60000, pendingIntent);
+        }
 
 
-        alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),1000 * 60 * 60 * 24, pendingIntent);
-
-        alarmManager.cancel(pendingIntent);
-
-
-    }*/
+    }
 
 
 

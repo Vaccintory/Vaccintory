@@ -2,14 +2,24 @@ package com.ku.vaccintory.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
+import com.ku.vaccintory.calendar.info.DateClass;
+import com.ku.vaccintory.calendar.info.NotifyReceiver;
 import com.ku.vaccintory.chatbot.MainChatBot;
 import com.ku.vaccintory.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +35,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCalendar.setOnClickListener(this);
         buttonChatBot = (LinearLayout) findViewById(R.id.buttonLayoutChatBot);
         buttonChatBot.setOnClickListener(this);
+
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String dateToday = sdfDate.format(new Date());
+        String fileName = dateToday+".txt";
+
+        if( InfoFunc.isFileExist(this,fileName) ){
+
+            DateClass.setYourDate(dateToday);
+
+
+            Intent intent = new Intent(this, NotifyReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            long timeNow = System.currentTimeMillis();
+            alarmManager.set(AlarmManager.RTC_WAKEUP,timeNow + 100 , pendingIntent);
+        }
 
 
     }

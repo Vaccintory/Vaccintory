@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ku.vaccintory">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -36,7 +37,10 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".calendar.info.Notify"/>
+        <receiver android:name=".calendar.info.NotifyReceiver"/>
+        <receiver
+            android:name=".calendar.info.NotifyReceiver">
+        </receiver>
 
         <meta-data
             android:name="preloaded_fonts"

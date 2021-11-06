@@ -54,7 +54,7 @@ public class InfoFunc extends AppCompatActivity {
             fos.write(info.getBytes());
 
 
-            Toast.makeText(thisClass, "Saved to" + thisClass.getFilesDir() + "/" + fileName, Toast.LENGTH_LONG).show();
+            /////Toast.makeText(thisClass, "Saved to" + thisClass.getFilesDir() + "/" + fileName, Toast.LENGTH_LONG).show();
 
 
         } catch (IOException e) {
