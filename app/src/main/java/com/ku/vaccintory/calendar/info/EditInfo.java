@@ -127,9 +127,11 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.EditInfo_saveButton:
                 try {
-                    if(checkTextLength())
-                    settingReminder();
-                    saveInfo();
+                    if(checkTextLength()){
+                        settingReminder();
+                        saveInfo();
+                    }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -155,11 +157,11 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
 
     private void saveInfo() {
         String info = this.date;
-        info = info + ": " + editTextType.getText();
-        info = info + ": " + editTextPlace.getText();
-        info = info + ": " + editTextPrice.getText();
-        info = info + ": " + editTextNote.getText();
-        info = info + ": " + checkRemind.isChecked();
+        info = info + ":" + editTextType.getText();
+        info = info + ":" + editTextPlace.getText();
+        info = info + ":" + editTextPrice.getText();
+        info = info + ":" + editTextNote.getText();
+        info = info + ":" + checkRemind.isChecked();
 
         InfoFunc.saveInfo(this, this.date + ".txt", info);
         editTextNote.getText().clear();
