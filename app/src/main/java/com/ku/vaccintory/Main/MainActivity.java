@@ -12,19 +12,22 @@ import android.widget.Toast;
 
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
-import com.ku.vaccintory.calendar.info.DateClass;
 import com.ku.vaccintory.calendar.info.NotifyReceiver;
 import com.ku.vaccintory.chatbot.MainChatBot;
 import com.ku.vaccintory.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LinearLayout buttonCalendar;
     private LinearLayout buttonChatBot;
+    private static int alarmID=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,31 +39,75 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonChatBot = (LinearLayout) findViewById(R.id.buttonLayoutChatBot);
         buttonChatBot.setOnClickListener(this);
 
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String dateToday = sdfDate.format(new Date());
-        String fileName = dateToday+".txt";
-
-        if( InfoFunc.isFileExist(this,fileName) ){
-
-            String rawData = InfoFunc.loadInfo(this,fileName);
-
-            assert rawData != null;
-            if( InfoFunc.getInfo_Check(rawData).contains("true") )
-            {
-                DateClass.setYourDate(dateToday);
-
-                Intent intent = new Intent(this, NotifyReceiver.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                long timeNow = System.currentTimeMillis();
-                alarmManager.set(AlarmManager.RTC_WAKEUP,timeNow + 100 , pendingIntent);
-            }
 
 
-        }
+        checkNotification();
 
 
     }
+
+    private void checkNotification(){
+
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String dateToday = sdfDate.format(new Date());
+        String fileName = dateToday+".txt";
+        notify(dateToday,fileName);
+
+
+        String dateTarget = dateToday;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(Objects.requireNonNull(sdf.parse(dateTarget)));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        c.add(Calendar.DATE, 7);  // number of days to add
+        dateTarget = sdf.format(c.getTime());  // is now the new date
+        notify(dateTarget,dateTarget+".txt");
+
+        dateTarget = dateToday;
+        sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        c = Calendar.getInstance();
+        try {
+            c.setTime(Objects.requireNonNull(sdf.parse(dateTarget)));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        c.add(Calendar.DATE, 1);  // number of days to add
+        dateTarget = sdf.format(c.getTime());  // is now the new date
+        notify(dateTarget,dateTarget+".txt");
+
+
+    }
+
+
+
+    private void notify(String date,String fileName){
+
+        if( InfoFunc.isFileExist(this,fileName) ){
+            String rawData = InfoFunc.loadInfo(this,fileName);
+            assert rawData != null;
+
+            if( InfoFunc.getInfo_Check(rawData).contains("true") )
+            {
+                Toast.makeText(this,"contain "+InfoFunc.getInfo_Check(rawData).contains("true")+" "+fileName,Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(this, NotifyReceiver.class);
+                intent.putExtra("key",date);
+                intent.putExtra("alarmID",alarmID);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(this,alarmID,intent,0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                long timeNow = System.currentTimeMillis();
+                alarmManager.set(AlarmManager.RTC_WAKEUP,timeNow , pendingIntent);
+                alarmID++;
+            }
+        }
+
+
+
+    }
+
 
     @Override
     public void onClick(View v) {

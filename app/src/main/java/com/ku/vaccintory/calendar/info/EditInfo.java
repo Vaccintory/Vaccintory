@@ -128,7 +128,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
             case R.id.EditInfo_saveButton:
                 try {
                     if(checkTextLength()){
-                        settingReminder();
+                        setAlarm();
                         saveInfo();
                     }
 
@@ -181,12 +181,6 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         startActivity(intent);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void settingReminder() {
-        DateClass.setYourDate(date);
-        setAlarm();
-    }
-
 
 
     private void setAlarm() {
@@ -196,6 +190,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
 
         if(alarm){
             Intent intentAlarm = new Intent("ALARM");
+            intentAlarm.putExtra("key",date);
             @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intentAlarm,0);
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
