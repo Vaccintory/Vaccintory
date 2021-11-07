@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
@@ -133,7 +134,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
                     }
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                     Toast.makeText(this, "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
 
@@ -163,7 +164,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         info = info + ":" + editTextNote.getText();
         info = info + ":" + checkRemind.isChecked();
 
-        InfoFunc.saveInfo(this, this.date + ".txt", info);
+        InfoFunc.saveInfo(this, this.date + ".txt" , info);
         editTextNote.getText().clear();
         editTextPrice.getText().clear();
         editTextPlace.getText().clear();
@@ -185,13 +186,15 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
 
     private void setAlarm() {
 
-
-        @SuppressLint("UnspecifiedImmutableFlag") boolean alarm = (PendingIntent.getBroadcast(this, 0, new Intent("ALARM"), PendingIntent.FLAG_NO_CREATE) == null);
-
+        String token = date.replaceAll("[-]", "");
+        int rq = Integer.parseInt(token);
+        boolean alarm = (PendingIntent.getBroadcast(this, rq, new Intent("ALARM"), PendingIntent.FLAG_NO_CREATE) == null);
         if(alarm){
             Intent intentAlarm = new Intent("ALARM");
             intentAlarm.putExtra("key",date);
-            @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intentAlarm,0);
+            intentAlarm.putExtra("alarmID",rq);
+
+            @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(this,rq,intentAlarm,0);
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.add(Calendar.SECOND, 3);

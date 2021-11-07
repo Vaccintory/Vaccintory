@@ -54,34 +54,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         notify(dateToday,fileName);
 
 
-        String dateTarget = dateToday;
+        checkXDay(1);
+
+        checkXDay(7);
+
+
+    }
+
+    private void checkXDay(int day){
+
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String dateTarget = sdfDate.format(new Date());
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         Calendar c = Calendar.getInstance();
         try {
             c.setTime(Objects.requireNonNull(sdf.parse(dateTarget)));
         } catch (ParseException e) {
-            e.printStackTrace();
+            Toast.makeText(this, "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        c.add(Calendar.DATE, 7);  // number of days to add
+        c.add(Calendar.DATE, day);  // number of days to add
         dateTarget = sdf.format(c.getTime());  // is now the new date
-        notify(dateTarget,dateTarget+".txt");
 
-        dateTarget = dateToday;
-        sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        c = Calendar.getInstance();
-        try {
-            c.setTime(Objects.requireNonNull(sdf.parse(dateTarget)));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        c.add(Calendar.DATE, 1);  // number of days to add
-        dateTarget = sdf.format(c.getTime());  // is now the new date
         notify(dateTarget,dateTarget+".txt");
-
 
     }
-
-
 
     private void notify(String date,String fileName){
 
@@ -91,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if( InfoFunc.getInfo_Check(rawData).contains("true") )
             {
-                Toast.makeText(this,"contain "+InfoFunc.getInfo_Check(rawData).contains("true")+" "+fileName,Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(this, NotifyReceiver.class);
                 intent.putExtra("key",date);
