@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
@@ -16,7 +14,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
@@ -37,7 +34,6 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
     private EditText editTextPlace;
     private EditText editTextPrice;
     private EditText editTextNote;
-
 
     private CheckBox checkRemind;
     public EditInfo() {
@@ -113,12 +109,8 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         {
             checkRemind.setEnabled(false);
         }
-        else if(day1 < day2){
-            checkRemind.setEnabled(false);
-        }
-        else{
-            checkRemind.setEnabled(true);
-        }
+        else checkRemind.setEnabled(day1 >= day2);
+
 
 
 
@@ -135,6 +127,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.EditInfo_saveButton:
                 try {
+                    if(checkTextLength())
                     settingReminder();
                     saveInfo();
                 } catch (Exception e) {
@@ -143,6 +136,19 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
                 break;
 
         }
+    }
+
+    private boolean checkTextLength(){
+        boolean check = true;
+
+        if( this.editTextType.length()>30 )
+            check = false;
+        else if( this.editTextPlace.length()>70 )
+            check = false;
+        else if( this.editTextPrice.length()>10 )
+            check = false;
+
+        return check;
     }
 
 
@@ -176,7 +182,6 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void settingReminder() {
         DateClass.setYourDate(date);
-        DateClass.setYourHour("00:00:00");
         setAlarm();
     }
 
@@ -185,11 +190,11 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
     private void setAlarm() {
 
 
-        boolean alarm = (PendingIntent.getBroadcast(this, 0, new Intent("ALARM"), PendingIntent.FLAG_NO_CREATE) == null);
+        @SuppressLint("UnspecifiedImmutableFlag") boolean alarm = (PendingIntent.getBroadcast(this, 0, new Intent("ALARM"), PendingIntent.FLAG_NO_CREATE) == null);
 
         if(alarm){
             Intent intentAlarm = new Intent("ALARM");
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intentAlarm,0);
+            @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intentAlarm,0);
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.add(Calendar.SECOND, 3);
@@ -199,6 +204,8 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
 
 
     }
+
+
 
 
 

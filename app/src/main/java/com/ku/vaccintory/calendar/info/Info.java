@@ -3,6 +3,7 @@ package com.ku.vaccintory.calendar.info;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,9 +15,13 @@ import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
 
+import java.io.File;
+
 public class Info extends AppCompatActivity implements View.OnClickListener   {
 
     private String dateKey=null;
+    private static String dateTextForm;
+    private static String fileName;
 
 
     @Override
@@ -31,11 +36,11 @@ public class Info extends AppCompatActivity implements View.OnClickListener   {
         }
 
         String rawData;
-        String fileName = this.dateKey+".txt";
+        fileName = this.dateKey+".txt";
         rawData = InfoFunc.loadInfo(this,fileName);
 
 
-        String dateTextForm = dateKey.replaceAll("[-]", "/");
+        dateTextForm = dateKey.replaceAll("[-]", "/");
         TextView textDate;
         textDate = findViewById(R.id.Info_textDate);
         textDate.setText(String.format("Date : %s", dateTextForm)); ///Set textDate to date
@@ -59,6 +64,9 @@ public class Info extends AppCompatActivity implements View.OnClickListener   {
         Button backButton = findViewById(R.id.Info_BackButton);
         backButton.setOnClickListener(this);
 
+        Button buttonDelete = findViewById(R.id.Info_Delete);
+        buttonDelete.setOnClickListener(this);
+
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -70,6 +78,9 @@ public class Info extends AppCompatActivity implements View.OnClickListener   {
                 break;
             case R.id.Info_BackButton:
                 openCalendar();
+                break;
+            case R.id.Info_Delete:
+                confirmDelete();
                 break;
 
         }
@@ -84,6 +95,41 @@ public class Info extends AppCompatActivity implements View.OnClickListener   {
     private void openCalendar() {
         Intent intent = new Intent(this, MainCalendar.class);
         startActivity(intent);
+    }
+    
+    private void deleteFile(){
+
+        File dir = getFilesDir();
+        File file = new File(dir, fileName);
+        boolean deleted = file.delete();
+        
+        openCalendar();
+    }
+
+
+    private void confirmDelete(){
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Deleting this Information")
+                .setMessage("You are deleting "+dateTextForm+" Information")
+                .setPositiveButton("Confirm",null)
+                .setNegativeButton("Cancel",null)
+                .show();
+        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        positiveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                dialog.dismiss();
+                deleteFile();
+
+            }
+        });
+        negativeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                dialog.dismiss();
+            }
+        });
     }
 
 }

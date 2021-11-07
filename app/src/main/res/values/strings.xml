@@ -19,7 +19,7 @@
     <string name="info_remind_me">Remind me</string>
     <string name="info_vaccineType">ประเภทวัคซีน</string>
     <string name="info_vaccinePlace">สถานที่รับวัคซีน</string>
-    <string name="info_vaccinePrice">ราคา บ.</string>
+    <string name="info_vaccinePrice">ราคา</string>
     <string name="info_vaccineNote">บันทึกเพิ่มเติม</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
