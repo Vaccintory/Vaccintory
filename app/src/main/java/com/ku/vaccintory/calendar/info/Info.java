@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.ku.vaccintory.Main.MainActivity;
 import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
@@ -93,7 +94,7 @@ public class Info extends AppCompatActivity implements View.OnClickListener   {
     }
 
     private void openCalendar() {
-        Intent intent = new Intent(this, MainCalendar.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
     

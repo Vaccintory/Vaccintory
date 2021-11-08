@@ -1,20 +1,26 @@
 package com.ku.vaccintory.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.app.AlarmManager;
+import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.ku.vaccintory.calendar.DatePickerFragment;
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
+import com.ku.vaccintory.calendar.info.MainInfo;
 import com.ku.vaccintory.chatbot.MainChatBot;
 import com.ku.vaccintory.R;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,12 +28,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     private LinearLayout buttonCalendar;
     private LinearLayout buttonChatBot;
     private static int alarmID=1;
     private static boolean alert=false;
+    String dateKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonLayoutCalendar:
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(),"date picker");
+                break;
+            case R.id.buttonLayoutChatBot:
+                openChatBot();
+                break;
+        }
     }
 
     private void checkNotification(){
@@ -108,24 +131,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.buttonLayoutCalendar:
-                openCalendar();
-                break;
-            case R.id.buttonLayoutChatBot:
-                openChatBot();
-                break;
-        }
-    }
-
-    public void openCalendar() {
-        Intent intent = new Intent(this, MainCalendar.class);
-        startActivity(intent);
-    }
     public void openChatBot() {
         Intent intent = new Intent(this, MainChatBot.class);
         startActivity(intent);
+    }
+
+
+    private void openMainInfo() {    ///use this function to pass Date  && Active MainInfo class
+        Intent intent = new Intent(this, MainInfo.class);
+        intent.putExtra("dateKey",dateKey);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR,year);
+        c.set(Calendar.MONTH,month);
+        c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        dateKey = df.format(c.getTime());
+        openMainInfo();
     }
 }

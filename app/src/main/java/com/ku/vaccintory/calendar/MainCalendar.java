@@ -1,14 +1,16 @@
 package com.ku.vaccintory.calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 
-import com.ku.vaccintory.R;
-import com.ku.vaccintory.calendar.info.MainInfo;
 
-public class MainCalendar extends AppCompatActivity {
+import com.ku.vaccintory.R;
+
+
+public class MainCalendar extends AppCompatActivity{
 
     private String dateKey=null; //// String form dd-mm-yyyy
 
@@ -17,6 +19,8 @@ public class MainCalendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
+        DialogFragment datePicker = new DatePickerFragment();
+        datePicker.show(getSupportFragmentManager(),"date picker");
 
 
 
@@ -31,13 +35,6 @@ public class MainCalendar extends AppCompatActivity {
 
 
 
-    }
-
-
-    private void openMainInfo() {    ///use this function to pass Date  && Active MainInfo class
-        Intent intent = new Intent(this, MainInfo.class);
-        intent.putExtra("dateKey",dateKey);
-        startActivity(intent);
     }
 
 

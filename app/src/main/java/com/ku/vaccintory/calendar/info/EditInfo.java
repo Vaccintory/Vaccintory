@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ku.vaccintory.Main.MainActivity;
 import com.ku.vaccintory.Main.MenuNotifyReceiver;
 import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
@@ -125,12 +126,15 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.EditInfo_cancelButton:
-                openCalendar();
+                openMainActivity();
                 break;
             case R.id.EditInfo_saveButton:
                 try {
                     if(checkTextLength()){
-                        setAlarm();
+
+                        if(checkRemind.isChecked())
+                            setAlarm();
+
                         saveInfo();
                     }
 
@@ -173,13 +177,13 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
 
 
 
-        Intent intent = new Intent(this, MainCalendar.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
 
     }
-    private void openCalendar() {
-        Intent intent = new Intent(this, MainCalendar.class);
+    private void openMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
