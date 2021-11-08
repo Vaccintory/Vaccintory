@@ -17,10 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ku.vaccintory.Main.MainActivity;
-import com.ku.vaccintory.Main.MenuNotifyReceiver;
 import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
-import com.ku.vaccintory.calendar.MainCalendar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -112,7 +110,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         {
             checkRemind.setEnabled(false);
         }
-        else checkRemind.setEnabled(day1 >= day2);
+        else checkRemind.setEnabled(day1 > day2);
 
 
 

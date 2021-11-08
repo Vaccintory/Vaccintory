@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.ku.vaccintory.Main.MainActivity;
 import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
-import com.ku.vaccintory.calendar.MainCalendar;
 
 import java.io.File;
 

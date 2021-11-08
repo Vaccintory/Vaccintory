@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 import com.ku.vaccintory.calendar.DatePickerFragment;
 import com.ku.vaccintory.calendar.InfoFunc;
-import com.ku.vaccintory.calendar.MainCalendar;
+import com.ku.vaccintory.calendar.info.EditInfo;
+import com.ku.vaccintory.calendar.info.Info;
 import com.ku.vaccintory.calendar.info.MainInfo;
 import com.ku.vaccintory.chatbot.MainChatBot;
 import com.ku.vaccintory.R;
@@ -138,9 +139,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void openMainInfo() {    ///use this function to pass Date  && Active MainInfo class
-        Intent intent = new Intent(this, MainInfo.class);
-        intent.putExtra("dateKey",dateKey);
-        startActivity(intent);
+        String fileName = dateKey+".txt";
+        if( InfoFunc.isFileExist(this,fileName) )
+            openInfo();
+        else
+            openEditInfo();
     }
 
 
@@ -154,5 +157,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         dateKey = df.format(c.getTime());
         openMainInfo();
+    }
+
+    private void openEditInfo() {    ///use this function to pass Date  && Active MainInfo class
+        Intent intent = new Intent(this, EditInfo.class);
+        intent.putExtra("dateKey",dateKey);
+        startActivity(intent);
+    }
+    private void openInfo() {    ///use this function to pass Date  && Active MainInfo class
+        Intent intent = new Intent(this, Info.class);
+        intent.putExtra("dateKey",dateKey);
+        startActivity(intent);
     }
 }
