@@ -22,7 +22,7 @@
             android:name=".calendar.info.EditInfo"
             android:exported="true" />
         <activity
-            android:name=".chatbot.MainChatBot"
+            android:name=".chatbot.ui.MainChatBot"
             android:exported="true" />
         <activity
             android:name=".calendar.MainCalendar"

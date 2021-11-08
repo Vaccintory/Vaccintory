@@ -17,8 +17,7 @@ import com.ku.vaccintory.calendar.DatePickerFragment;
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.info.EditInfo;
 import com.ku.vaccintory.calendar.info.Info;
-import com.ku.vaccintory.calendar.info.MainInfo;
-import com.ku.vaccintory.chatbot.MainChatBot;
+import com.ku.vaccintory.chatbot.ui.MainChatBot;
 import com.ku.vaccintory.R;
 
 import java.text.DateFormat;

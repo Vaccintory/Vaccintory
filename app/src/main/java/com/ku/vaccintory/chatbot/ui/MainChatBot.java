@@ -1,4 +1,4 @@
-package com.ku.vaccintory.chatbot;
+package com.ku.vaccintory.chatbot.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
