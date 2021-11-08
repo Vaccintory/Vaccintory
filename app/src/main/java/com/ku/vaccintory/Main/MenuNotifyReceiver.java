@@ -15,6 +15,10 @@ import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.info.EditInfo;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class MenuNotifyReceiver extends BroadcastReceiver {
 
@@ -24,6 +28,9 @@ public class MenuNotifyReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String date = intent.getStringExtra("key");
         int AlarmID = intent.getIntExtra("alarmID",0);
+
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String dateNow = sdfDate.format(new Date());
 
         try {
 
@@ -36,7 +43,9 @@ public class MenuNotifyReceiver extends BroadcastReceiver {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
             builder.setTicker("new message");
             builder.setContentTitle("Vaccintory Reminder");
-            builder.setContentText("Notification of vaccination on "+dateTextForm);
+            builder.setContentText("แจ้งเตือนการรับวัคซีนในวันที่ "+dateTextForm);
+            if(date.equals(dateNow))
+                builder.setContentText("แจ้งเตือนการรับวัคซีน, วันนี้!!");
             builder.setSmallIcon(R.drawable.ic_baseline_alarm_24);
             builder.setContentIntent(p);
             builder.setAutoCancel(false);

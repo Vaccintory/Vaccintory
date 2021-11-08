@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout buttonCalendar;
     private LinearLayout buttonChatBot;
     private static int alarmID=1;
+    private static boolean alert=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +40,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonChatBot.setOnClickListener(this);
 
 
+        if( !alert ){
+            checkNotification();
+        }
 
-        checkNotification();
 
 
     }
 
     private void checkNotification(){
 
+        alert = true;
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         String dateToday = sdfDate.format(new Date());
         String fileName = dateToday+".txt";
@@ -94,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(this,alarmID,intent,0);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 long timeNow = System.currentTimeMillis();
-                alarmManager.set(AlarmManager.RTC_WAKEUP,timeNow , pendingIntent);
+                alarmManager.set(AlarmManager.RTC,timeNow , pendingIntent);
                 alarmID++;
             }
         }

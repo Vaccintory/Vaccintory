@@ -191,7 +191,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         int rq = Integer.parseInt(token);
         boolean alarm = (PendingIntent.getBroadcast(this, rq, new Intent("ALARM"), PendingIntent.FLAG_NO_CREATE) == null);
         if(alarm){
-            Intent intentAlarm = new Intent(this, MenuNotifyReceiver.class);
+            Intent intentAlarm = new Intent(this, NotifyReceiver.class);
             intentAlarm.putExtra("key",date);
             intentAlarm.putExtra("alarmID",rq);
 
@@ -200,7 +200,8 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.add(Calendar.SECOND, 3);
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),60000, pendingIntent);
+            alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),3600000, pendingIntent);
+
 
         }
 

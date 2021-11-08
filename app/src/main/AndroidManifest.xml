@@ -38,9 +38,7 @@
         </activity>
 
         <receiver android:name=".Main.MenuNotifyReceiver"/>
-        <receiver
-            android:name=".Main.MenuNotifyReceiver">
-        </receiver>
+        <receiver android:name=".calendar.info.NotifyReceiver"/>
 
         <meta-data
             android:name="preloaded_fonts"
