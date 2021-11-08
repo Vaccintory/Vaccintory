@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="MainActivity">
 
 
     <LinearLayout
@@ -46,11 +47,8 @@
         android:layout_height="match_parent"
         android:layout_above="@id/ll_layout_bar"
         android:layout_below="@+id/dark_divider"
-        android:layout_marginTop="-11dp"
-        android:layout_marginBottom="11dp"
         tools:itemCount="20"
         tools:listitem="@layout/message_item" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
