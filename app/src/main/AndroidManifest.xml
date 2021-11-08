@@ -37,9 +37,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".calendar.info.NotifyReceiver"/>
+        <receiver android:name=".Main.MenuNotifyReceiver"/>
         <receiver
-            android:name=".calendar.info.NotifyReceiver">
+            android:name=".Main.MenuNotifyReceiver">
         </receiver>
 
         <meta-data

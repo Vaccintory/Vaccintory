@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ku.vaccintory.Main.MenuNotifyReceiver;
 import com.ku.vaccintory.R;
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
@@ -190,16 +191,17 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         int rq = Integer.parseInt(token);
         boolean alarm = (PendingIntent.getBroadcast(this, rq, new Intent("ALARM"), PendingIntent.FLAG_NO_CREATE) == null);
         if(alarm){
-            Intent intentAlarm = new Intent("ALARM");
+            Intent intentAlarm = new Intent(this, MenuNotifyReceiver.class);
             intentAlarm.putExtra("key",date);
             intentAlarm.putExtra("alarmID",rq);
 
-            @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getBroadcast(this,rq,intentAlarm,0);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,rq,intentAlarm,0);
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.add(Calendar.SECOND, 3);
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),60000, pendingIntent);
+
         }
 
 

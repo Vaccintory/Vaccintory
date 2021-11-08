@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.ku.vaccintory.calendar.InfoFunc;
 import com.ku.vaccintory.calendar.MainCalendar;
-import com.ku.vaccintory.calendar.info.NotifyReceiver;
 import com.ku.vaccintory.chatbot.MainChatBot;
 import com.ku.vaccintory.R;
 
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if( InfoFunc.getInfo_Check(rawData).contains("true") )
             {
 
-                Intent intent = new Intent(this, NotifyReceiver.class);
+                Intent intent = new Intent(this, MenuNotifyReceiver.class);
                 intent.putExtra("key",date);
                 intent.putExtra("alarmID",alarmID);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(this,alarmID,intent,0);
