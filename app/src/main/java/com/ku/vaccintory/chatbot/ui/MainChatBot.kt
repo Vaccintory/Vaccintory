@@ -110,7 +110,7 @@ class MainChatBot : AppCompatActivity() {
                 //Scrolls us to the position of the latest message
                 rv_messages.scrollToPosition(adapter.itemCount - 1)
 
-                //Starts Google
+                /*//Starts Google
                 when (response) {
                     OPEN_GOOGLE -> {
                         val site = Intent(Intent.ACTION_VIEW)
@@ -124,7 +124,7 @@ class MainChatBot : AppCompatActivity() {
                         startActivity(site)
                     }
 
-                }
+                }*/
             }
         }
     }

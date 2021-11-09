@@ -36,13 +36,13 @@ object BotResponse {
 
 
             message.contains("help") -> {
-                when (random) {
+                when (0) {
                     0 -> "ถามข้อมูลวัคซีน พิมพ์ 'vaccine' \nเกิดอุบัติเหตุ พิมพ์ 'accident' "
                     else -> "error"
                 }
             }
             message.contains("vaccine") -> {
-                when (random) {
+                when (0) {
                     0 -> "ถามข้อมูล  ------พิมพ์ '--' \n  "
                     else -> "error"
                 }
@@ -52,7 +52,7 @@ object BotResponse {
 
             //When the programme doesn't understand...
             else -> {
-                when (random) {
+                when (0) {
                     0 -> "ฉันไม่เข้าใจ?  สงสัยการใช้งาน พิมพ์ 'help'"
                     else -> "error"
                 }
