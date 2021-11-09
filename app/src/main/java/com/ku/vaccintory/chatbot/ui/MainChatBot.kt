@@ -110,21 +110,7 @@ class MainChatBot : AppCompatActivity() {
                 //Scrolls us to the position of the latest message
                 rv_messages.scrollToPosition(adapter.itemCount - 1)
 
-                /*//Starts Google
-                when (response) {
-                    OPEN_GOOGLE -> {
-                        val site = Intent(Intent.ACTION_VIEW)
-                        site.data = Uri.parse("https://www.google.com/")
-                        startActivity(site)
-                    }
-                    OPEN_SEARCH -> {
-                        val site = Intent(Intent.ACTION_VIEW)
-                        val searchTerm: String? = message.substringAfterLast("search")
-                        site.data = Uri.parse("https://www.google.com/search?&q=$searchTerm")
-                        startActivity(site)
-                    }
 
-                }*/
             }
         }
     }
