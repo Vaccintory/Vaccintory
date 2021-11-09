@@ -77,14 +77,13 @@ class MainChatBot : AppCompatActivity() {
     }
     private fun sendMessage() {
         val message = et_message.text.toString()
-        val timeStamp = Time.timeStamp()
 
         if (message.isNotEmpty()) {
             //Adds it to our local list
-            messagesList.add(Message(message, SEND_ID, timeStamp))
+            messagesList.add(Message(message, SEND_ID))
             et_message.setText("")
 
-            adapter.insertMessage(Message(message, SEND_ID, timeStamp))
+            adapter.insertMessage(Message(message, SEND_ID))
             rv_messages.scrollToPosition(adapter.itemCount - 1)
 
             botResponse(message)
@@ -92,7 +91,6 @@ class MainChatBot : AppCompatActivity() {
     }
 
     private fun botResponse(message: String) {
-        val timeStamp = Time.timeStamp()
 
         GlobalScope.launch {
             //Fake response delay
@@ -103,10 +101,10 @@ class MainChatBot : AppCompatActivity() {
                 val response = BotResponse.basicResponses(message)
 
                 //Adds it to our local list
-                messagesList.add(Message(response, RECEIVE_ID, timeStamp))
+                messagesList.add(Message(response, RECEIVE_ID))
 
                 //Inserts our message into the adapter
-                adapter.insertMessage(Message(response, RECEIVE_ID, timeStamp))
+                adapter.insertMessage(Message(response, RECEIVE_ID))
 
                 //Scrolls us to the position of the latest message
                 rv_messages.scrollToPosition(adapter.itemCount - 1)
@@ -135,9 +133,8 @@ class MainChatBot : AppCompatActivity() {
         GlobalScope.launch {
             delay(1000)
             withContext(Dispatchers.Main) {
-                val timeStamp = Time.timeStamp()
-                messagesList.add(Message(message, RECEIVE_ID, timeStamp))
-                adapter.insertMessage(Message(message, RECEIVE_ID, timeStamp))
+                messagesList.add(Message(message, RECEIVE_ID))
+                adapter.insertMessage(Message(message, RECEIVE_ID))
 
                 rv_messages.scrollToPosition(adapter.itemCount - 1)
             }
