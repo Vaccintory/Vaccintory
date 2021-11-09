@@ -12,6 +12,9 @@ import com.ku.vaccintory.chatbot.utils.Constants.SEND_ID
 import kotlinx.android.synthetic.main.activity_main_chat_bot.*
 import kotlinx.coroutines.*
 import java.sql.Time
+import android.net.Uri
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainChatBot : AppCompatActivity() {
 
