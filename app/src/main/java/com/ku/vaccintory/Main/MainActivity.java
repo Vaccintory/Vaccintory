@@ -83,29 +83,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkXDay(1);
 
         checkXDay(7);
+        checkXDay(-1);
+        checkXDay(-2);
+        checkXDay(-3);
 
-        checkPrvDay();
-
-
-    }
-
-    private void checkPrvDay(){
-
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String dateTarget = sdfDate.format(new Date());
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        Calendar c = Calendar.getInstance();
-        try {
-            c.setTime(Objects.requireNonNull(sdf.parse(dateTarget)));
-        } catch (ParseException e) {
-            Toast.makeText(this, "Error "+e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        c.add(Calendar.DATE, -1);  // number of days to add
-        dateTarget = sdf.format(c.getTime());  // is now the new date
-        notify(dateTarget+" คุณได้รับหรือยัง?",dateTarget+".txt");
 
     }
+
+
 
     private void checkXDay(int day){
 
@@ -122,7 +107,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         c.add(Calendar.DATE, day);  // number of days to add
         dateTarget = sdf.format(c.getTime());  // is now the new date
 
-        notify(dateTarget,dateTarget+".txt");
+        if(day>0)
+            notify(dateTarget,dateTarget+".txt");
+        else
+            notify(dateTarget+" คุณได้รับหรือยัง?",dateTarget+".txt");
 
     }
 
