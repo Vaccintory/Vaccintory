@@ -106,11 +106,11 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         if( year1 < year2  )
         {
             checkRemind.setEnabled(false);
-        }else if( month1 < month2 )
+        }else if( month1 < month2 && year1 <= year2 )
         {
             checkRemind.setEnabled(false);
         }
-        else if( day1 <= day2 ) {
+        else if( day1 <= day2 && month1 <= month2 && year1 <= year2 ) {
             checkRemind.setChecked(false);
             checkRemind.setEnabled(false);
         }
