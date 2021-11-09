@@ -89,6 +89,7 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
 
         checkRemind.setOnClickListener(this);
 
+        checkRemind.setEnabled(true);
 
         SimpleDateFormat sdfDay = new SimpleDateFormat("dd", Locale.getDefault());
         String day = sdfDay.format(new Date());
@@ -110,7 +111,11 @@ public class EditInfo extends AppCompatActivity implements View.OnClickListener 
         {
             checkRemind.setEnabled(false);
         }
-        else checkRemind.setEnabled(day1 > day2);
+        else if( day1 >= day2 ) {
+            checkRemind.setChecked(false);
+            checkRemind.setEnabled(false);
+        }
+
 
 
 
