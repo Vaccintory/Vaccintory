@@ -3,13 +3,14 @@ package com.ku.vaccintory.chatbot.utils
 import java.sql.Date
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
+import java.util.*
 
 object BotResponse {
 
     fun basicResponses(_message: String): String {
 
         val random = (0..2).random()
-        val message =_message.toLowerCase()
+        val message = _message.lowercase(Locale.getDefault())
 
         return when {
 
@@ -58,8 +59,10 @@ object BotResponse {
 
             //When the programme doesn't understand...
             else -> {
-                when (0) {
+                when (random) {
                     0 -> "ฉันไม่เข้าใจ?  สงสัยการใช้งาน พิมพ์ 'help'"
+                    1 -> "ฉันไม่เข้าใจ?  สงสัยการใช้งาน พิมพ์ 'Help'"
+                    2 -> "ฉันไม่เข้าใจ?  สงสัยการใช้งาน พิมพ์ 'HELP'"
                     else -> "error"
                 }
             }
