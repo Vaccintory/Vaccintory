@@ -19,7 +19,13 @@ object BotResponse {
                 when (random) {
                     0 -> "Hello there!"
                     1 -> "Hello"
-                    2 -> "สวัสดี!!!"
+                    else -> "error" }
+            }
+            message.contains("สวัสดี") -> {
+                when (random) {
+                    0 -> "ไง!"
+                    1 -> "สวัสดี!!!"
+                    2 -> "ว่าไง"
                     else -> "error" }
             }
 
