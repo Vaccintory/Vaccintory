@@ -2,18 +2,19 @@ package com.ku.vaccintory.chatbot.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ku.vaccintory.R
 import com.ku.vaccintory.chatbot.utils.BotResponse
 import com.ku.vaccintory.chatbot.utils.Constants.RECEIVE_ID
 import com.ku.vaccintory.chatbot.utils.Constants.SEND_ID
+import com.ku.vaccintory.chatbot.data.Message
 import kotlinx.android.synthetic.main.activity_main_chat_bot.*
 import kotlinx.coroutines.*
-import java.sql.Time
+
 import android.net.Uri
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 
 class MainChatBot : AppCompatActivity() {
