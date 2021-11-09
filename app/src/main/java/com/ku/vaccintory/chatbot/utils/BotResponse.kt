@@ -55,6 +55,12 @@ object BotResponse {
                     else -> "error"
                 }
             }
+            message.contains("accident") -> {
+                when (0) {
+                    0 -> ""
+                    else -> "error"
+                }
+            }
 
 
 
