@@ -39,6 +39,8 @@ class MainChatBot : AppCompatActivity() {
         customBotMessage("สวัสดี!! ฉันคือบอทของ Vaccintory , ให้ช่วยอะไรไหม?")
     }
 
+
+
     private fun clickEvents() {
 
         //Send a message
