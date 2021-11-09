@@ -62,8 +62,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.buttonLayoutCalendar:
+
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(),"date picker");
+
                 break;
             case R.id.buttonLayoutChatBot:
                 openChatBot();
@@ -81,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         checkXDay(1);
-
         checkXDay(7);
         checkXDay(-1);
         checkXDay(-2);
@@ -163,6 +164,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         dateKey = df.format(c.getTime());
+
+
         openMainInfo();
     }
 
