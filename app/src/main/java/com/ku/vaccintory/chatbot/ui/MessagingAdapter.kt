@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ku.vaccintory.R
 import com.ku.vaccintory.chatbot.data.Message
+import com.ku.vaccintory.chatbot.utills.Constants.RECEIVE_ID
+import com.ku.vaccintory.chatbot.utills.Constants.SEND_ID
 
 class MessagingAdapter :RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>(){
     var messageList = mutableListOf<Message>()
@@ -19,7 +22,7 @@ class MessagingAdapter :RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        return MessageViewHolder(LayoutInflater.from(parent.context).inflate(R.layoutayout.message_item,parent,false))
+        return MessageViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.message_item,parent,false))
     }
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
