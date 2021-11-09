@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         c.add(Calendar.DATE, -1);  // number of days to add
         dateTarget = sdf.format(c.getTime());  // is now the new date
-        notify(dateTarget+" คุณได้ไปรับมาแล้วหรือยัง?",dateTarget+".txt");
+        notify(dateTarget+" คุณได้รับหรือยัง?",dateTarget+".txt");
 
     }
 
