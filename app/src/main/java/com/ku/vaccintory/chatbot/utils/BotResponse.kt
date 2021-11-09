@@ -30,18 +30,7 @@ object BotResponse {
                     else -> "error" }
             }
 
-            //How are you?
-            message.contains("how are you") -> {
-                when (random) {
-                    0 -> "I'm doing fine, thanks!"
-                    1 -> "I'm hungry..."
-                    2 -> "Pretty good! How about you?"
-                    else -> "error"
-                }
-            }
-
-
-
+            
             message.contains("help") -> {
                 when (0) {
                     0 -> "ถามข้อมูลวัคซีน พิมพ์ 'vaccine' \nเกิดอุบัติเหตุ พิมพ์ 'accident' "
